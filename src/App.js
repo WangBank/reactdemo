@@ -1,8 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import {Button} from 'antd-mobile'
-import 'antd-mobile/dist/antd-mobile.css'
+import {Button,List} from 'antd-mobile'
 
 
 function App(props) {
@@ -38,11 +37,15 @@ class Testzz extends React.Component{
       <div>
         <p>boss is {this.props.boss}</p>
         <Button type='primary' onClick={this.addPerson}>add new person</Button>
-        <ul>
-          {this.state.family.map(f=>{
-            return <li key={f}>{f}</li>
-          })}
-        </ul>
+        <List 
+         renderHeader={()=>'家庭吆'}>
+          {this.state.family.map(f=>
+            {
+              return (<List.Item key={f}>{f}
+                    </List.Item>)
+            }
+            )}
+         </List>
       </div>
     )
   }
