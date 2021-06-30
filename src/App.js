@@ -2,7 +2,30 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import {Button,List} from 'antd-mobile'
+import {createStore} from 'redux'
 
+// function counter(state=0,action){
+//   switch (action.type) {
+//     case 'qin':
+//       return state+1      
+//     case 'wang':
+//         return state-1
+//     default:
+//       return 10
+//   }
+// }
+
+// const store = createStore(counter)
+// function listerner(){
+//   const current = store.getState()
+//   console.log(current)
+// }
+
+// store.subscribe(listerner)
+
+// store.dispatch({type:'qin'})
+// store.dispatch({type:'wang'})
+// store.dispatch({type:'wang'})
 
 function App(props) {
  
