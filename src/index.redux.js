@@ -18,3 +18,11 @@ export function addPerson(){
 export function leavePerson(){
   return {type:wang}
 }
+
+export function addPersonAsync(){
+  return dispatch =>{
+    setTimeout(() => {
+      dispatch(addPerson())
+    }, 2000);
+  }
+}

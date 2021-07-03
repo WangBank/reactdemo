@@ -3,15 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore} from 'redux'
-import {counter} from './index.redux'
+import {createStore,applyMiddleware,compose} from 'redux'
+import thunk from 'redux-thunk'
+import {counter,addPerson,leavePerson,addPersonAsync} from './index.redux'
 
-const store = createStore(counter)
+const store = createStore(counter, compose(
+  applyMiddleware(thunk),
+  window.devToolsExtension?window.devToolsExtension():f=>f
+))
+
+
 
 function render(){
   ReactDOM.render(
     <React.StrictMode>
-      <App store={store}/>
+      <App store={store} addPerson={addPerson} leavePerson={leavePerson} addPersonAsync={addPersonAsync}/>
     </React.StrictMode>,
     document.getElementById('root')
   );
