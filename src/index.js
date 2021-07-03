@@ -3,13 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createStore} from 'redux'
+import {counter} from './index.redux'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App boss='wangzhen and qinlimin'/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const store = createStore(counter)
+
+function render(){
+  ReactDOM.render(
+    <React.StrictMode>
+      <App store={store}/>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+}
+render()
+store.subscribe(render)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
