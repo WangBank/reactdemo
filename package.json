@@ -57,7 +57,9 @@
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.3",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-refresh": "^0.8.3",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "resolve": "1.18.1",
@@ -98,6 +100,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.14.5",
     "babel-plugin-import": "^1.13.3"
   },
   "jest": {
@@ -157,6 +160,12 @@
       "react-app"
     ],
     "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
       [
         "import",
         {
