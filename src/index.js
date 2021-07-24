@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
 import {createStore,applyMiddleware,compose} from 'redux'
-import thunk from 'redux-thunk'
-import {counter} from './index.redux'
 import {Provider} from "react-redux"
+
+import thunk from 'redux-thunk'
 import {
   BrowserRouter,
   Route,
@@ -14,64 +13,27 @@ import {
   Redirect,
   Switch
 } from "react-router-dom"
-import './config';
 
-const store = createStore(counter, compose(
+import reducers from './reducer';
+import './config';
+import Register from './pages/register/register';
+import Login from './pages/login/login';
+import Auth from '../src/component/auth/auth'
+
+const store = createStore(reducers, compose(
   applyMiddleware(thunk),
   window.devToolsExtension?window.devToolsExtension():f=>f
 ))
-function qlm(){
-  return <h2>qlm</h2>
-}
 
-function xpt(){
-  return <h2>xpt</h2>
-}
+ReactDOM.render(
+  (<Provider store={store}>
+    <BrowserRouter>
+    <Auth></Auth>
+    <Route path="/login" component={Login}></Route>
+    <Route path="/register" component={Register}></Route>
+    </BrowserRouter>
+  </Provider>),
+  document.getElementById('root')
+)
 
-class Test extends React.Component{
-  constructor(props){
-    super(props)
-  }
-  render(){
-    return(
-      <h2>404</h2>
-    )
-  }
-}
-
-  ReactDOM.render((
-      <React.StrictMode>
-      <Provider store={store}>
-      <BrowserRouter>
-      <div>
-        <ul>
-            <li>
-              <Link to='/'>wz</Link>
-            </li>
-            <li>
-              <Link to='/qlm'>qlm</Link>
-            </li>
-            <li>
-              <Link to='/xpt'>xpt</Link>
-            </li>
-          </ul>
-          <Switch>
-          <Route path='/' exact component={App}></Route>
-          <Route path='/qlm' component={qlm}></Route>
-          <Route path='/xpt' component={xpt}></Route>
-          <Route path='/:location' component={Test}></Route>
-          </Switch>
-         
-      </div>
-      </BrowserRouter>
-     
-    </Provider> 
-    </React.StrictMode>
-  ) ,
-    document.getElementById('root')
-  );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
