@@ -6,6 +6,19 @@ class Login extends React.Component{
   constructor(props){
     super(props);
     this.register = this.register.bind(this)
+    this.state = {
+      user_name:'',
+      pwd:''
+    }
+  }
+  handleChange(key,value){
+    this.setState({
+      [key]:value
+    })
+  }
+
+  handleLogin(){
+    console.log(this.state)
   }
 
   register(){
@@ -18,12 +31,12 @@ class Login extends React.Component{
         <Logo></Logo>
         <h2>Login</h2>
         <List>
-          <InputItem>UserName</InputItem>
+          <InputItem onChange={v=>this.handleChange('user_name',v)}>UserName</InputItem>
           <WhiteSpace></WhiteSpace>
-          <InputItem>Password</InputItem>
+          <InputItem type="password" onChange={v=>this.handleChange('pwd',v)}>Password</InputItem>
         </List>
         <WingBlank>
-          <Button type="primary">Login</Button>
+          <Button type="primary" onClick={()=>this.handleLogin()}>Login</Button>
           <WhiteSpace></WhiteSpace>
           <Button type="primary" onClick={this.register}>Register</Button>
         </WingBlank>
