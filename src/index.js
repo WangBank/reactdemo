@@ -14,6 +14,7 @@ import {
   Redirect,
   Switch
 } from "react-router-dom"
+import './config';
 
 const store = createStore(counter, compose(
   applyMiddleware(thunk),

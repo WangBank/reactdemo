@@ -35,7 +35,7 @@ User.remove({name:'wangzhen'},(err,doc)=>{
       }
 })
 
-app.get('/',function(req,res){
+app.get('/data',function(req,res){
   User.find({},function(err,doc){
     if(err){
       res.json({name:'qinlimin',age:25})

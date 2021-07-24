@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import {connect} from 'react-redux'
 import {addPerson,leavePerson,addPersonAsync} from './index.redux'
+import axios from 'axios'
 
 // const mapStatetoProps= (state)=>{
 //   return {num:state}
@@ -14,6 +15,14 @@ import {addPerson,leavePerson,addPersonAsync} from './index.redux'
   {addPerson,leavePerson,addPersonAsync}
   )
 class App extends React.Component{
+
+  componentDidMount(){
+    axios.get('/data')
+    .then(res=>{
+      console.log(res)
+    })
+  }
+
   render(){
     return(
       <div>
