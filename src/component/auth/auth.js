@@ -15,7 +15,7 @@ class Auth extends React.Component{
           if(res.status ===200){
            let data = res.data
            if(data.code ===0){
-             this.props.history.push('/')
+             this.props.history.push(pathname)
            }else{
             this.props.history.push('/login')
            }
