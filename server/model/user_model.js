@@ -7,9 +7,20 @@ mongoose.connection.on('connected',function(){
   console.log('connect mongodb success')
 })
 
-const User = mongoose.model('user',new mongoose.Schema(
-  {
-    name:{type:String,require:true},
-    age:{type:Number,require:true}
+const Models = {
+  user:{
+    'username':{type:String,require:true},
+    'pwd':{type:String,require:true},
+    'avatar':{type:String}
   }
-))
+}
+
+for(let m in Models){
+  mongoose.model(m,new mongoose.Schema(Models[m]))
+}
+
+module.exports = {
+  getModel:function(name){
+    return mongoose.model(name)
+  }
+}
